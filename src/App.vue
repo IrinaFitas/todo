@@ -1,12 +1,15 @@
 <template>
-  <div id="app">
-    <h1>fhgfhgf</h1>
-  </div>
+	<div id="app">
+		<app-list></app-list>
+	</div>
 </template>
 
 <script>
+import List from "./components/List.vue";
 export default {
-
+  components: {
+    appList: List
+  }
 }
 </script>
 
@@ -18,5 +21,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: red;
 }
 </style>
