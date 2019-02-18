@@ -1,7 +1,8 @@
 <template>
 	<div id="app">
-		<app-input-item></app-input-item>
+		<app-input-item :value="task" @input="task = $event.target.value"></app-input-item>
 		<app-list></app-list>
+		<p>{{ task }}</p>
 	</div>
 </template>
 
@@ -9,10 +10,15 @@
 import List from "./components/List.vue";
 import InputItem from "./components/Input-item.vue";
 export default {
-  components: {
+	components: {
 	appList: List,
 	appInputItem: InputItem
-  }
+	},
+	data() {
+		return {
+			task: "soem"
+		}
+	}
 }
 </script>
 
