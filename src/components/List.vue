@@ -1,18 +1,28 @@
 <template>
-    <div>
         <ul>
-            <li v-for="value in arr"> {{ value }} </li>
+            <app-list-item></app-list-item>
         </ul>
-    </div>
 </template>
 
 <script>
+import ListItem from "./List-item.vue";
 export default {
     data() {
         return {
-            arr: [1, 2, 3]
+            
         }
+    },
+    components: {
+        appListItem: ListItem
     }
 }
 </script>
+
+<style>
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>
 
