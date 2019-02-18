@@ -1,6 +1,6 @@
 <template>
     <li>
-        <span> {{ taskFromParent.text }} </span>
+        <span :class="{done: doneClass }"> {{ taskFromParent.text }} </span>
         <button class="btn btn-done" @click="taskDone">&#10003;</button>
         <button class="btn btn-delete" @click="taskDeleted">&times;</button>
     </li>
@@ -9,15 +9,30 @@
 <script>
 export default {
     props: ["taskFromParent"],
+    computed: {
+        doneClass () {
+            if (this.taskFromParent.done) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
     methods: {
         taskDone() {
-            console.log(this.taskFromParent);
             this.$emit("taskWasDone", this.taskFromParent.id);
         },
         taskDeleted () {
-
+            this.$emit("taskWasDeleted", this.taskFromParent.id);
         }
     }
 }
 </script>
+
+<style scoped>
+    .done {
+        text-decoration: line-through;
+    }
+</style>
+
 

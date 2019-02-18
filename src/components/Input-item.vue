@@ -2,7 +2,6 @@
     <div>
         <input type="text" v-model="task">
         <button @click="addTask">Add</button>
-        <p>{{ task }}</p>
     </div>
 </template>
 
@@ -18,7 +17,7 @@ export default {
             this.$emit("addedTask", { 
                 text: this.task,
 				id: Date.now(),
-                done: false
+                done: false,
             });
         }
     }
