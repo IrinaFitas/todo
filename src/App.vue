@@ -1,8 +1,7 @@
 <template>
 	<div id="app">
-		<app-input-item :value="task" @input="task = $event.target.value"></app-input-item>
-		<app-list></app-list>
-		<p>{{ task }}</p>
+		<app-input-item @addedTask="addedTask"></app-input-item>
+		<app-list :list="taskArray"></app-list>
 	</div>
 </template>
 
@@ -16,7 +15,17 @@ export default {
 	},
 	data() {
 		return {
-			task: "soem"
+			taskArray: [
+                { id: 1, text: "To do something", done: false },
+                { id: 2, text:  "and another task", done: false },
+                { id: 3, text:  "...and some another task", done: false },
+                { id: 43123948712938, text:  "...and some another task", done: false }
+            ]
+		}
+	},
+	methods: {
+		addedTask($event) {
+			this.taskArray.push($event);
 		}
 	}
 }

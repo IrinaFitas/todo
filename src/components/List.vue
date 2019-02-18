@@ -1,15 +1,21 @@
 <template>
         <ul>
-            <app-list-item></app-list-item>
+            <app-list-item 
+                v-for="(item, index) in list" 
+                :taskFromParent="item" 
+                :key="index"
+                @taskWasDone="addDone">
+            </app-list-item>
         </ul>
 </template>
 
 <script>
 import ListItem from "./List-item.vue";
 export default {
-    data() {
-        return {
-            
+    props: ["list"],
+    methods: {
+        addDone(id) {
+            //this.taskArray.forEach(elem => );
         }
     },
     components: {

@@ -1,17 +1,25 @@
 <template>
     <div>
-        <input type="text" :value="value">
+        <input type="text" v-model="task">
         <button @click="addTask">Add</button>
+        <p>{{ task }}</p>
     </div>
 </template>
 
 <script>
 export default {
-    props: ["value"],
+    data() {
+        return {
+            task: ""
+        }
+    },
     methods: {
         addTask() {
-            console.log($event);
-            this.$emit("input", $event.target.value);
+            this.$emit("addedTask", { 
+                text: this.task,
+				id: Date.now(),
+                done: false
+            });
         }
     }
 }
