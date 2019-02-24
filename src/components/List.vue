@@ -1,6 +1,6 @@
 <template>
-        <ul>
-            <transition-group name="list">
+        <div>
+            <transition-group name="list" tag="ul">
                 <app-list-item 
                     v-for="(item, index) in list" 
                     :taskFromParent="item" 
@@ -9,7 +9,7 @@
                     @taskWasDeleted="deleteTask">
                 </app-list-item>
             </transition-group>
-        </ul>
+        </div>
 </template>
 
 <script>
@@ -35,6 +35,18 @@ export default {
         list-style: none;
         margin: 0;
         padding: 0;
+        width: 100%;
+        position: relative;
+        margin-top: -14px;
+    }
+    ul::before {
+        content: "";
+        width: 4px;
+        height: 100%;
+        border-left: 1px solid #f2e3df;
+        border-right: 1px solid #f2e3df;
+        position: absolute;
+        left: 80px;
     }
 
     .list-item {

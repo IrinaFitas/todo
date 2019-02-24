@@ -1,5 +1,6 @@
 <template>
 	<div id="app">
+		<h1>Todo List</h1>
 		<app-input-item @addedTask="addedTask"></app-input-item>
 		<app-list :list="taskArray" @idWasPassed="passedId" @deleteTaskId="deleteTask"></app-list>
 	</div>
@@ -21,7 +22,6 @@ export default {
 	methods: {
 		addedTask($event) {
 			this.taskArray.push($event);
-			console.log($event);
 		},
 		passedId(id) {
 			const index = this.taskArray.findIndex( elem => elem.id === id);
@@ -43,18 +43,21 @@ export default {
 </script>
 
 <style>
+body {
+	background-image: linear-gradient(to left, #f6f3f3,#f2eeee);
+}
 #app {
-	display: flex;
 	margin: auto;
-	flex-direction: column;
-	justify-content: center;
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
-	border: 2px solid black;
-	width: 85%;
+	width: 400px;
+	background-color: #ffffff;
+	border: 1px solid #d1cfcf;
+	box-shadow: 0 0 1px 0 grey;
+
 }
 </style>
