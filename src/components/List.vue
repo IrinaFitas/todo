@@ -2,7 +2,7 @@
         <div>
             <transition-group name="list" tag="ul">
                 <app-list-item 
-                    v-for="(item, index) in list" 
+                    v-for="(item, index) in limitedList" 
                     :taskFromParent="item" 
                     :key="index"
                     @taskWasDone="addDone"
@@ -15,7 +15,12 @@
 <script>
 import ListItem from "./List-item.vue";
 export default {
-    props: ["list"],
+    props: ["list", "offsetList", "limitList"],
+    computed: {
+        limitedList() {
+            return this.list.slice(this.offsetList, this.offsetList + this.limitList);
+        }
+    },
     methods: {
         addDone(id) {
             this.$emit("idWasPassed", id);

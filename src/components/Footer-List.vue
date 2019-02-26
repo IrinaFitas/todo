@@ -1,29 +1,42 @@
 <template>
     <footer class="footer-list">
-        <button class="previous-btn">Previous</button>
-        <button class="next-btn">Next</button>
+        <button class="previous-btn" :disabled="!offset" @click="previous">Previous</button>
+        <button class="next-btn" :disabled="offset + limit > totalItems" @click="next">Next</button>
     </footer>
 </template>
 <script>
 export default {
-    
+    props: ["offset", "limit", "totalItems"],
+    methods: {
+        previous() {
+            this.$emit("showPrev");
+        },
+        next() {
+            this.$emit("showNext");
+        }
+    }
 }
 </script>
-<style>
+<style lang="scss" scoped>
     .footer-list {
         display: flex;
         padding: 15px;
         justify-content: space-around;
-    }
 
-    button {
-        background-color: transparent;
+        button {
+            background-color: transparent;
+            color: #676f7f;
+            font-size: 16px;
+            padding: 5px;
+            border: none;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+    button[disabled] {
         color: #d7d8da;
-        font-size: 16px;
-        padding: 5px;
-        border: none;
-        position: relative;
-    }   
+    }
     .previous-btn::before {
         display: inline-block;
         content: "";
@@ -44,7 +57,7 @@ export default {
         content: "";
         width: 25px;
         height: 25px;
-        background-color: #d7d8da;
+        background-color: #676f7f;
         border-radius: 50%;
     }
 
@@ -68,8 +81,13 @@ export default {
         content: "";
         width: 25px;
         height: 25px;
-        background-color: #d7d8da;
+        background-color: #676f7f;
         border-radius: 50%;
+    }
+
+    .previous-btn[disabled]::after,
+    .next-btn[disabled]::after {
+        background-color: #d7d8da;
     }
 </style>
 

@@ -2,8 +2,19 @@
 	<div id="app">
 		<h1>Todo List</h1>
 		<app-input-item @addedTask="addedTask"></app-input-item>
-		<app-list :list="taskArray" @idWasPassed="passedId" @deleteTaskId="deleteTask"></app-list>
-		<app-footer></app-footer>
+		<app-list 
+			:list="taskArray" 
+			@idWasPassed="passedId" 
+			@deleteTaskId="deleteTask"
+			:offsetList="offset"
+			:limitList="limit"></app-list>
+		<app-footer
+			:offset="offset"
+			:limit="limit"
+			:totalItems="taskArray.length"
+			@showPrev="offset -= 5"
+			@showNext="offset += 5">
+		</app-footer>
 	</div>
 </template>
 
@@ -19,12 +30,17 @@ export default {
 	},
 	data() {
 		return {
-			taskArray: []
+			taskArray: [],
+			offset: 0,
+            limit: 5
 		}
 	},
 	methods: {
-		addedTask($event) {
-			this.taskArray.push($event);
+		addedTask(data) {
+			this.taskArray.push(data);
+			// if (this.taskArray.length % 5 === 0) {
+			// 	this.offset += 5;
+			// }
 		},
 		passedId(id) {
 			const index = this.taskArray.findIndex( elem => elem.id === id);
