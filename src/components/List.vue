@@ -37,7 +37,6 @@ export default {
         padding: 0;
         width: 100%;
         position: relative;
-        margin-top: -14px;
     }
     ul::before {
         content: "";

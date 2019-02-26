@@ -3,16 +3,19 @@
 		<h1>Todo List</h1>
 		<app-input-item @addedTask="addedTask"></app-input-item>
 		<app-list :list="taskArray" @idWasPassed="passedId" @deleteTaskId="deleteTask"></app-list>
+		<app-footer></app-footer>
 	</div>
 </template>
 
 <script>
 import List from "./components/List.vue";
 import InputItem from "./components/Input-item.vue";
+import FooterList from "./components/Footer-List.vue";
 export default {
 	components: {
 	appList: List,
-	appInputItem: InputItem
+	appInputItem: InputItem,
+	appFooter: FooterList
 	},
 	data() {
 		return {
