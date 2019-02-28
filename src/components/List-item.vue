@@ -79,6 +79,11 @@ export default {
         width: 40px;
         height: 40px;
         overflow: visible;
+        display: none;
+    }
+
+    .list-item:hover .btn-delete {
+        display: block;
     }
 </style>
 

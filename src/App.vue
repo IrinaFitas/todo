@@ -38,9 +38,9 @@ export default {
 	methods: {
 		addedTask(data) {
 			this.taskArray.push(data);
-			// if (this.taskArray.length % 5 === 0) {
-			// 	this.offset += 5;
-			// }
+			if (this.taskArray.length % 5 === 0) {
+				this.offset += 5;
+			}
 		},
 		passedId(id) {
 			const index = this.taskArray.findIndex( elem => elem.id === id);
@@ -77,6 +77,5 @@ body {
 	background-color: #ffffff;
 	border: 1px solid #d1cfcf;
 	box-shadow: 0 0 1px 0 grey;
-
 }
 </style>
