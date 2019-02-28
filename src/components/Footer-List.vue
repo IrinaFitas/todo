@@ -1,7 +1,7 @@
 <template>
     <footer class="footer-list">
-        <button class="previous-btn" :disabled="!offset" @click="previous">Previous</button>
-        <button class="next-btn" :disabled="offset + limit > totalItems" @click="next">Next</button>
+        <button class="btn previous-btn" :disabled="!offset" @click="previous">Previous</button>
+        <button class="btn next-btn" :disabled="offset + limit > totalItems" @click="next">Next</button>
     </footer>
 </template>
 <script>
@@ -37,52 +37,48 @@ export default {
     button[disabled] {
         color: #d7d8da;
     }
-    .previous-btn::before {
+    .previous-btn::before,
+    .previous-btn::after,
+    .next-btn::before, 
+    .next-btn::after {
         display: inline-block;
         content: "";
+        position: absolute;
+    } 
+    .previous-btn::before {
         border: 10px solid transparent;
         border-right-color: white;
         border-left: 0;
-        position: absolute;
         left: -22px;
         top: 4px;
         z-index: 10;
-    } 
+    }
 
-    .previous-btn::after {
-        display: inline-block;
-        position: absolute;
-        left: -28px;
-        top: 2px;
-        content: "";
+    .previous-btn::after,
+    .next-btn::after {
         width: 25px;
         height: 25px;
         background-color: #676f7f;
         border-radius: 50%;
     }
 
+    .previous-btn::after {
+        left: -28px;
+        top: 2px;
+    }
+
     .next-btn::before {
-        display: inline-block;
-        content: "";
         border: 10px solid transparent;
         border-left-color: white;
         border-right: 0;
-        position: absolute;
         right: -22px;
         top: 4px;
         z-index: 10;
     } 
 
     .next-btn::after {
-        display: inline-block;
-        position: absolute;
         right: -28px;
         top: 2px;
-        content: "";
-        width: 25px;
-        height: 25px;
-        background-color: #676f7f;
-        border-radius: 50%;
     }
 
     .previous-btn[disabled]::after,

@@ -1,7 +1,7 @@
 <template>
-    <li>
+    <li class="list-item">
         <button class="btn btn-done" @click="taskDone">&#10003;</button>
-        <span :class="{done: doneClass }"> {{ taskFromParent.text }} </span>
+        <span class="task-text" :class="{done: doneClass }"> {{ taskFromParent.text }} </span>
         <!-- <button class="btn btn-delete" @click="taskDeleted">&times;</button> -->
     </li>
 </template>
@@ -34,7 +34,7 @@ export default {
         text-decoration: line-through;
     }
 
-    li {
+    .list-item {
         display: flex;
         align-items: center;
         font-size: 16px;
@@ -43,7 +43,7 @@ export default {
         border-bottom: 1.5px solid #e6ebed;
     }
 
-    span {
+    .task-text {
         margin-left: 20px;
         padding: 5px;
         margin-right: 20px;

@@ -1,6 +1,6 @@
 <template>
         <div>
-            <transition-group name="list" tag="ul">
+            <transition-group name="list" tag="ul" class="list">
                 <app-list-item 
                     v-for="(item, index) in limitedList" 
                     :taskFromParent="item" 
@@ -36,14 +36,14 @@ export default {
 </script>
 
 <style>
-    ul {
+    .list {
         list-style: none;
         margin: 0;
         padding: 0;
         width: 100%;
         position: relative;
     }
-    ul::before {
+    .list::before {
         content: "";
         width: 4px;
         height: 100%;
